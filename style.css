@@ -1,0 +1,542 @@
+/* =========================
+   BASE / RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: #09090b;
+    color: #fafafa;
+    overflow-x: hidden;
+}
+
+/* =========================
+   COLOR SYSTEM
+========================= */
+
+:root {
+    --bg: #09090b;
+    --surface: #18181b;
+    --surface2: #27272a;
+
+    --primary: #9d4edd;
+    --primary2: #c77dff;
+
+    --text: #fafafa;
+    --muted: #a1a1aa;
+
+    --border: #3f3f46;
+}
+
+/* =========================
+   BACKGROUND EFFECTS
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* glowing blobs */
+
+.blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.4;
+    animation: float 12s infinite ease-in-out;
+}
+
+.blob1 {
+    background: var(--primary);
+    top: -100px;
+    left: -150px;
+}
+
+.blob2 {
+    background: #4c1d95;
+    bottom: -150px;
+    right: -150px;
+    animation-delay: 3s;
+}
+
+/* subtle grid overlay */
+
+.grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.2;
+}
+
+/* animation */
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(30px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 60px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    backdrop-filter: blur(12px);
+    background: rgba(9, 9, 11, 0.6);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    z-index: 1000;
+}
+
+nav .logo {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--primary2);
+    letter-spacing: 1px;
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary2);
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+#hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* online status */
+
+.status {
+    color: #22c55e;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* main title */
+
+#hero h1 {
+    font-size: 64px;
+    line-height: 1.1;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary), var(--primary2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* subtitle */
+
+.hero-description {
+    margin-top: 20px;
+    max-width: 600px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* buttons */
+
+.hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.primary-button {
+    background: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.primary-button:hover {
+    background: var(--primary2);
+    transform: translateY(-2px);
+}
+
+.secondary-button {
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.secondary-button:hover {
+    border-color: var(--primary2);
+    color: var(--primary2);
+    transform: translateY(-2px);
+}
+
+/* scroll hint */
+
+.scroll {
+    position: absolute;
+    bottom: 30px;
+    font-size: 12px;
+    color: var(--muted);
+    animation: float 3s infinite ease-in-out;
+}
+
+
+/* =========================
+   SECTIONS BASE
+========================= */
+
+section {
+    padding: 100px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* section titles */
+
+section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    background: linear-gradient(90deg, var(--primary), var(--primary2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+#about {
+    text-align: center;
+}
+
+#about p {
+    max-width: 750px;
+    margin: 0 auto;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* =========================
+   PROJECTS SECTION
+========================= */
+
+.projects-grid {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+/* project card */
+
+.project-card {
+    background: rgba(24, 24, 27, 0.7);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary2);
+    box-shadow: 0 10px 40px rgba(157, 78, 221, 0.2);
+}
+
+/* image placeholder */
+
+.project-image {
+    height: 180px;
+    background: linear-gradient(135deg, #1e1b4b, #312e81);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* content */
+
+.project-content {
+    padding: 20px;
+}
+
+.project-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.project-content p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* tags */
+
+.tags {
+    margin-top: 15px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tags span {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(157, 78, 221, 0.15);
+    border: 1px solid rgba(157, 78, 221, 0.3);
+    color: var(--primary2);
+}
+
+/* =========================
+   SKILLS SECTION
+========================= */
+
+.skills {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.skills span {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(39, 39, 42, 0.7);
+    border: 1px solid rgba(255,255,255,0.05);
+    color: var(--text);
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.skills span:hover {
+    border-color: var(--primary2);
+    color: var(--primary2);
+    transform: scale(1.05);
+}
+
+/* =========================
+   CONTACT SECTION
+========================= */
+
+#contact {
+    text-align: center;
+}
+
+#contact p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+/* contact links */
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.contact-links a {
+    text-decoration: none;
+    color: var(--text);
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+.contact-links a:hover {
+    border-color: var(--primary2);
+    color: var(--primary2);
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* =========================
+   SCROLL REVEAL (basic animation support)
+   (JS will toggle .show)
+========================= */
+
+section,
+.project-card,
+.skills span {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+}
+
+section.show,
+.project-card.show,
+.skills span.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   SMOOTH MICRO INTERACTIONS
+========================= */
+
+/* smoother hover everywhere */
+a, button, .project-card, .skills span {
+    will-change: transform;
+}
+
+/* =========================
+   NAV SCROLL EFFECT
+========================= */
+
+nav.scrolled {
+    background: rgba(9, 9, 11, 0.85);
+    border-bottom: 1px solid rgba(157, 78, 221, 0.2);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 900px) {
+
+    #hero h1 {
+        font-size: 42px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    #hero h1 {
+        font-size: 34px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    section h2 {
+        font-size: 28px;
+    }
+}
+
+/* =========================
+   SMALL POLISH
+========================= */
+
+/* selection color */
+::selection {
+    background: var(--primary);
+    color: white;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary2);
+}
